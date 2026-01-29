@@ -1,0 +1,306 @@
+/* Team Flame - FLL Judging Presentation Resources
+   Color Palette: Red (#d32f2f) and Orange (#ff9800) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.site-header {
+    background: linear-gradient(135deg, #d32f2f 0%, #ff6f00 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.site-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.team-number {
+    font-size: 1.25rem;
+    font-weight: 600;
+    opacity: 0.95;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+/* Asset Section Styles */
+.asset-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #d32f2f;
+}
+
+.asset-section:last-child {
+    margin-bottom: 0;
+}
+
+.asset-section h2 {
+    color: #d32f2f;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ff9800;
+}
+
+#innovation-project {
+    border-left-color: #d32f2f;
+}
+
+#innovation-project h2 {
+    color: #d32f2f;
+}
+
+#robot-presentation {
+    border-left-color: #ff6f00;
+}
+
+#robot-presentation h2 {
+    color: #ff6f00;
+    border-bottom-color: #d32f2f;
+}
+
+/* Asset Item Base Styles */
+.asset-item {
+    margin-bottom: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.asset-item:last-child {
+    margin-bottom: 0;
+}
+
+.asset-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Collapsible Details/Summary Styles */
+.asset-item summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    cursor: pointer;
+    background: #f8f8f8;
+    transition: background 0.2s ease;
+    list-style: none;
+}
+
+.asset-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.asset-item summary::after {
+    content: '▶';
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #999;
+    transition: transform 0.2s ease;
+}
+
+.asset-item[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.asset-item summary:hover {
+    background: #f0f0f0;
+}
+
+.asset-item summary:focus {
+    outline: 2px solid #ff9800;
+    outline-offset: -2px;
+}
+
+/* PDF Link Styles (non-collapsible) */
+.asset-pdf a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+    background: #f8f8f8;
+    transition: background 0.2s ease;
+}
+
+.asset-pdf a:hover {
+    background: #f0f0f0;
+}
+
+.asset-pdf a::after {
+    content: '↗';
+    margin-left: auto;
+    font-size: 1rem;
+    color: #999;
+}
+
+.asset-pdf a:focus {
+    outline: 2px solid #ff9800;
+    outline-offset: -2px;
+}
+
+/* Asset Icon */
+.asset-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* Asset Title and Description */
+.asset-title {
+    font-weight: 600;
+    color: #333;
+    display: block;
+}
+
+.asset-description {
+    font-size: 0.875rem;
+    color: #666;
+    display: block;
+    margin-top: 0.125rem;
+}
+
+/* Asset Content (expanded) */
+.asset-content {
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.asset-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Video Container - Responsive 16:9 */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Asset Type Indicators */
+.asset-photo .asset-icon { color: #4caf50; }
+.asset-video .asset-icon { color: #f44336; }
+.asset-pdf .asset-icon { color: #2196f3; }
+
+/* Footer */
+.site-footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .site-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .site-header h1 {
+        font-size: 2rem;
+    }
+    
+    .team-number {
+        font-size: 1.1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .asset-section {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    .asset-section h2 {
+        font-size: 1.25rem;
+    }
+    
+    .asset-item summary,
+    .asset-pdf a {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .asset-title {
+        flex: 1 1 calc(100% - 3rem);
+    }
+    
+    .asset-description {
+        flex: 1 1 100%;
+        padding-left: 2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .site-header {
+        background: #d32f2f;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .asset-item[open] .asset-content {
+        display: block;
+    }
+    
+    .asset-item summary::after,
+    .asset-pdf a::after {
+        display: none;
+    }
+}
