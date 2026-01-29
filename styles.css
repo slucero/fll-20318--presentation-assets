@@ -234,6 +234,85 @@ main {
 .asset-photo .asset-icon { color: #4caf50; }
 .asset-video .asset-icon { color: #f44336; }
 .asset-pdf .asset-icon { color: #2196f3; }
+.asset-gallery .asset-icon { color: #9c27b0; }
+.asset-documents .asset-icon { color: #2196f3; }
+
+/* Gallery layout for multiple images */
+.asset-content.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.asset-content.gallery figure {
+    margin: 0;
+    text-align: center;
+}
+
+.asset-content.gallery figure img {
+    width: 100%;
+    height: auto;
+}
+
+.asset-content.gallery figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Document list for grouped PDFs */
+.asset-content.document-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.document-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: #f8f8f8;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+}
+
+.document-link:hover {
+    background: #f0f0f0;
+}
+
+.document-link::after {
+    content: '↗';
+    float: right;
+    color: #999;
+}
+
+.doc-title {
+    font-weight: 600;
+    display: block;
+}
+
+.doc-desc {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Placeholder styling */
+.asset-item.placeholder {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.placeholder-badge {
+    background: #ff9800;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
 
 /* Footer */
 .site-footer {
@@ -249,38 +328,38 @@ main {
     .site-header {
         padding: 1.5rem 1rem;
     }
-    
+
     .site-header h1 {
         font-size: 2rem;
     }
-    
+
     .team-number {
         font-size: 1.1rem;
     }
-    
+
     main {
         padding: 1rem;
     }
-    
+
     .asset-section {
         padding: 1rem;
         border-radius: 8px;
     }
-    
+
     .asset-section h2 {
         font-size: 1.25rem;
     }
-    
+
     .asset-item summary,
     .asset-pdf a {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
-    
+
     .asset-title {
         flex: 1 1 calc(100% - 3rem);
     }
-    
+
     .asset-description {
         flex: 1 1 100%;
         padding-left: 2rem;
@@ -294,11 +373,11 @@ main {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    
+
     .asset-item[open] .asset-content {
         display: block;
     }
-    
+
     .asset-item summary::after,
     .asset-pdf a::after {
         display: none;
