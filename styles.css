@@ -366,6 +366,105 @@ main {
     }
 }
 
+/* Sticky summary when details is open */
+.asset-item[open] summary {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+/* Lightbox container - scrollable when zoomed */
+.lightbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.lightbox-container.zoomed {
+    overflow: auto;
+    cursor: grab;
+}
+
+.lightbox-container.zoomed:active {
+    cursor: grabbing;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 4px;
+    cursor: zoom-in;
+    transition: max-width 0.2s, max-height 0.2s;
+}
+
+.lightbox-container.zoomed img {
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    z-index: 1001;
+}
+
+.lightbox-close:hover {
+    color: #ff9800;
+}
+
+.lightbox p {
+    color: white;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.lightbox-hint {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+/* Gallery images clickable */
+.asset-content.gallery figure img {
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+}
+
+.asset-content.gallery figure img:hover {
+    opacity: 0.9;
+}
+
 /* Print Styles */
 @media print {
     .site-header {

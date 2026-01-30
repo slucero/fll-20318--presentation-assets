@@ -27,11 +27,11 @@
                 </summary>
                 <div class="asset-content gallery">
                     <figure>
-                        <img src="assets/innovation/Project Board 1.png" alt="Project Board 1" loading="lazy">
+                        <img src="assets/innovation/Project Board 1.png" alt="Project Board 1" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Project Board 1</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/innovation/Project Board 2.png" alt="Project Board 2" loading="lazy">
+                        <img src="assets/innovation/Project Board 2.png" alt="Project Board 2" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Project Board 2</figcaption>
                     </figure>
                 </div>
@@ -80,15 +80,15 @@
                 </summary>
                 <div class="asset-content gallery">
                     <figure>
-                        <img src="assets/robot/Robot Board 1.png" alt="Robot Board 1" loading="lazy">
+                        <img src="assets/robot/Robot Board 1.png" alt="Robot Board 1" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Robot Board 1</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Robot Board 2.png" alt="Robot Board 2" loading="lazy">
+                        <img src="assets/robot/Robot Board 2.png" alt="Robot Board 2" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Robot Board 2</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Robot Board 3.png" alt="Robot Board 3" loading="lazy">
+                        <img src="assets/robot/Robot Board 3.png" alt="Robot Board 3" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Robot Board 3</figcaption>
                     </figure>
                 </div>
@@ -103,27 +103,27 @@
                 </summary>
                 <div class="asset-content gallery">
                     <figure>
-                        <img src="assets/robot/Robot Base.png" alt="Robot Base" loading="lazy">
+                        <img src="assets/robot/Robot Base.png" alt="Robot Base" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Robot Base</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Run 1 Attachment.png" alt="Run 1 Attachment" loading="lazy">
+                        <img src="assets/robot/Run 1 Attachment.png" alt="Run 1 Attachment" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Run 1 Attachment</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Run 2 Attachment.png" alt="Run 2 Attachment" loading="lazy">
+                        <img src="assets/robot/Run 2 Attachment.png" alt="Run 2 Attachment" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Run 2 Attachment</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Run 3 Attachment.png" alt="Run 3 Attachment" loading="lazy">
+                        <img src="assets/robot/Run 3 Attachment.png" alt="Run 3 Attachment" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Run 3 Attachment</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Run 4 Attachment.png" alt="Run 4 Attachment" loading="lazy">
+                        <img src="assets/robot/Run 4 Attachment.png" alt="Run 4 Attachment" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Run 4 Attachment</figcaption>
                     </figure>
                     <figure>
-                        <img src="assets/robot/Run 5 Attachment.png" alt="Run 5 Attachment" loading="lazy">
+                        <img src="assets/robot/Run 5 Attachment.png" alt="Run 5 Attachment" loading="lazy" onclick="openLightbox(this)">
                         <figcaption>Run 5 Attachment</figcaption>
                     </figure>
                 </div>
@@ -191,5 +191,64 @@
     <footer class="site-footer">
         <p>Team Flame #20318 &bull; FIRST LEGO League</p>
     </footer>
+
+    <!-- Lightbox overlay -->
+    <div id="lightbox" class="lightbox" onclick="handleLightboxClick(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+        <div id="lightbox-container" class="lightbox-container">
+            <img id="lightbox-img" src="" alt="" onclick="toggleZoom(event)">
+        </div>
+        <p id="lightbox-caption"></p>
+        <p id="lightbox-hint" class="lightbox-hint">Click image to zoom</p>
+    </div>
+
+    <script>
+    function openLightbox(img) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const caption = document.getElementById('lightbox-caption');
+        const container = document.getElementById('lightbox-container');
+
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        caption.textContent = img.alt;
+        container.classList.remove('zoomed');
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        updateZoomHint(false);
+    }
+
+    function closeLightbox(event) {
+        if (event) event.stopPropagation();
+        const lightbox = document.getElementById('lightbox');
+        const container = document.getElementById('lightbox-container');
+        lightbox.classList.remove('active');
+        container.classList.remove('zoomed');
+        document.body.style.overflow = '';
+    }
+
+    function toggleZoom(event) {
+        event.stopPropagation();
+        const container = document.getElementById('lightbox-container');
+        const isZoomed = container.classList.toggle('zoomed');
+        updateZoomHint(isZoomed);
+    }
+
+    function updateZoomHint(isZoomed) {
+        const hint = document.getElementById('lightbox-hint');
+        hint.textContent = isZoomed ? 'Click image to fit screen' : 'Click image to zoom';
+    }
+
+    function handleLightboxClick(event) {
+        // Close if clicking outside the image container
+        if (event.target.id === 'lightbox') {
+            closeLightbox();
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+    </script>
 </body>
 </html>
